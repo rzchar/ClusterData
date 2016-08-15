@@ -195,7 +195,7 @@ function onload() {
 		dataType : "json",
 		data : {
 			mod : 'start',
-			dbsource : 'default'
+			dbsource : 'remote1'
 		},
 		success : function(data) {
 			dataFromServer = data;

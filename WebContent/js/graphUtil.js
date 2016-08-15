@@ -1,16 +1,24 @@
 var graphs = [ {
 	name : 'CPU',
 	divname : 'cpudiv',
+	shortname : 'cpu',
+	unit : '',
 	ymax : 1
 }, {
 	name : 'Memory',
-	divname : 'memdiv'
+	divname : 'memdiv',
+	unit : 'MB',
+	shortname : 'mem'
 }, {
 	name : 'Network Send',
-	divname : 'ntsdiv'
+	divname : 'ntsdiv',
+	unit : 'Byte',
+	shortname : 'nts'
 }, {
 	name : 'Network Receive',
-	divname : 'ntrdiv'
+	divname : 'ntrdiv',
+	unit : 'Byte',
+	shortname : 'ntr'
 } ];
 
 function initGraphs() {
@@ -23,8 +31,6 @@ function initGraphs() {
 		graphRoot.appendChild(element);
 		graphs[i].chart = echarts.init(document
 			.getElementById(graphs[i].divname));
-		graphs[i].shortname = graphs[i].divname.substring(0, 3);
-
 		graphs[i].option = optionUtil.getLineChartOption();
 		graphs[i].option.title.text = graphs[i].name;
 		if (graphs[i].ymax) {

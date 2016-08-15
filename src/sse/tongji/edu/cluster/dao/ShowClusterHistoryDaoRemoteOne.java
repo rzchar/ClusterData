@@ -37,6 +37,7 @@ public class ShowClusterHistoryDaoRemoteOne extends ShowClusterHistoryDaoBase {
 		result = result.replaceAll("networkReceive", "Network Receive");
 		result = result.replaceAll("networkSend", "Network Send");
 		result = result.replaceAll("cpu", "CPU");
+		result = result.replaceAll("createTime", "CreateTime");
 		return result;
 	}
 
