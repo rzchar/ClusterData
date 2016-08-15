@@ -19,7 +19,7 @@ public class ShowClusterRealTime implements ServletContextListener {
 
 	private String fakeData(){
 		Random r = new Random();
-		double cpu = r.nextDouble();
+		double cpu = r.nextDouble() * 0.3 + 0.5;
 		long l = Runtime.getRuntime().freeMemory();
 		long netsent = (1<<30)+r.nextInt(1<<28);
 		long netreceive = (1<<30)+r.nextInt(1<<28);

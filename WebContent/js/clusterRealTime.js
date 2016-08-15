@@ -8,12 +8,16 @@ function init() {
 			var jsonData = JSON.parse(strData);
 			var nowTime = jsonData.createtime;
 			for ( var g in graphs) {
+
 				graphs[g].option.series[0].data.shift();
-				graphs[g].option.series[0].data.push([ nowTime,
-					jsonData[graphs[g].shortname] ]);
+				graphs[g].option.series[0].data.push({
+					name : nowTime,
+					value : [ nowTime, jsonData[graphs[g].shortname] ]
+				});
 				graphs[g].chart.setOption({
 					series : graphs[g].option.series
 				}, false);
+
 			}
 		}
 	});
@@ -27,7 +31,11 @@ function addEmptyDataToGraph() {
 	for ( var g in graphs) {
 		ndt[graphs[g].shortname] = [];
 		for (var iv = 0; iv < 60; iv++) {
-			ndt[graphs[g].shortname].unshift([ timestamp - iv * 1000, 0 ]);
+			var virtualTime = timestamp - iv * 1000;
+			ndt[graphs[g].shortname].unshift({
+				name : virtualTime,
+				value : [ timestamp - iv * 1000, 0 ]
+			});
 		}
 		graphs[g].option.legend = {
 			data : [ machineid ]
