@@ -17,25 +17,7 @@ public class ShowClusterRealTime implements ServletContextListener {
 
 	private static final String CHANNEL = "test";
 
-	private String fakeData(){
-		Random r = new Random();
-		double cpu = r.nextDouble() * 0.3 + 0.5;
-		long l = Runtime.getRuntime().freeMemory();
-		long netsent = (1<<30)+r.nextInt(1<<28);
-		long netreceive = (1<<30)+r.nextInt(1<<28);
-		JSONObject jo = new JSONObject();
-		try {
-			jo.accumulate("cpu", cpu);
-			jo.accumulate("nts", netsent);
-			jo.accumulate("ntr", netreceive);
-			jo.accumulate("mem", l);
-			jo.accumulate("createtime", Calendar.getInstance().getTimeInMillis());
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		System.out.println("backend :: " + jo.toString());
-		return jo.toString();
-	}
+	
 	
 
 	class HelloAppModule implements Runnable {
@@ -50,9 +32,10 @@ public class ShowClusterRealTime implements ServletContextListener {
 				CometEngine engine = CometContext.getInstance().getEngine();
 				
 				// 开始发送
-				engine.sendToAll(CHANNEL, fakeData());
+				engine.sendToAll(CHANNEL, "");
 			}
 		}
+		
 	}
 
 	@Override
@@ -64,13 +47,13 @@ public class ShowClusterRealTime implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		CometContext cc = CometContext.getInstance();
 		cc.registChannel(CHANNEL);// 注册应用的channel
-
-		Thread helloAppModule = new Thread(new HelloAppModule(),
-			"Sender App Module");
+		
+		//Thread helloAppModule = new Thread(new HelloAppModule(),
+		//	"Sender App Module");
 		// 是否启动
-		helloAppModule.setDaemon(true);
+		//helloAppModule.setDaemon(true);
 		// 启动线程
-		helloAppModule.start();
+		//helloAppModule.start();
 
 	}
 
