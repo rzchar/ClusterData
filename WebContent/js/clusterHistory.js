@@ -56,8 +56,8 @@ function refactorData(dt, callback) {
 		records = JSON.parse(dt.value);
 		for ( var i in records) {
 			for ( var g in graphs) {
-				ndt[graphs[g].shortname].push([ records[i].CreateTime,
-					records[i][graphs[g].name] ]);
+				ndt[graphs[g].shortname].push([ records[i].createtime,
+					records[i][graphs[g].shortname] ]);
 			}
 		}
 		// out.innerText = JSON.stringify(ndt);
@@ -195,7 +195,7 @@ function onload() {
 		dataType : "json",
 		data : {
 			mod : 'start',
-			dbsource : 'remote1'
+			dbsource : 'default'
 		},
 		success : function(data) {
 			dataFromServer = data;

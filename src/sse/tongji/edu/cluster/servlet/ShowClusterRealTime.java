@@ -12,13 +12,12 @@ import org.comet4j.core.CometEngine;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sse.tongji.edu.cluster.config.Params;
+
 @WebListener
 public class ShowClusterRealTime implements ServletContextListener {
 
-	private static final String CHANNEL = "test";
-
-	
-	
+	private static final String CHANNEL = Params.RealTimeChanel;
 
 	class HelloAppModule implements Runnable {
 		public void run() {
@@ -30,12 +29,11 @@ public class ShowClusterRealTime implements ServletContextListener {
 					ex.printStackTrace();
 				}
 				CometEngine engine = CometContext.getInstance().getEngine();
-				
 				// 开始发送
 				engine.sendToAll(CHANNEL, "");
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -47,13 +45,13 @@ public class ShowClusterRealTime implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		CometContext cc = CometContext.getInstance();
 		cc.registChannel(CHANNEL);// 注册应用的channel
-		
-		//Thread helloAppModule = new Thread(new HelloAppModule(),
-		//	"Sender App Module");
+
+		Thread helloAppModule = new Thread(new HelloAppModule(),
+			"Sender App Module");
 		// 是否启动
-		//helloAppModule.setDaemon(true);
+		helloAppModule.setDaemon(true);
 		// 启动线程
-		//helloAppModule.start();
+		helloAppModule.start();
 
 	}
 

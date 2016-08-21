@@ -20,6 +20,12 @@ public class ShowClusterHistoryDaoLocal extends ShowClusterHistoryDaoBase {
 
 	@Override
 	protected String formatJsonContent(String stringFromDB) {
-		return stringFromDB;
+		String result = stringFromDB;
+		result = result.replaceAll("Memory", "mem");
+		result = result.replaceAll("Network Receive", "ntr");
+		result = result.replaceAll("Network Send", "nts");
+		result = result.replaceAll("CPU", "cpu");
+		result = result.replaceAll("CreateTime", "createtime");
+		return result;
 	}
 }

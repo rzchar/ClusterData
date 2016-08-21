@@ -10,18 +10,17 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <listener>
-		<description>Comet4JListener</description>
-		<listener-class>org.comet4j.core.CometAppListener</listener-class>
-	</listener>
-	<servlet>
-		<description>CometConnection[default:org.comet4j.core.CometServlet]</description>
-		<display-name>CometServlet</display-name>
-		<servlet-name>CometServlet</servlet-name>
-		<servlet-class>org.comet4j.core.CometServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CometServlet</servlet-name>
-		<url-pattern>/comet</url-pattern>
-	</servlet-mapping>
-  
+    <description>Comet4JListener</description>
+    <listener-class>org.comet4j.core.CometAppListener</listener-class>
+  </listener>
+  <servlet>
+    <description>CometConnection[default:org.comet4j.core.CometServlet]</description>
+    <display-name>CometServlet</display-name>
+    <servlet-name>CometServlet</servlet-name>
+    <servlet-class>org.comet4j.core.CometServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CometServlet</servlet-name>
+    <url-pattern>/comet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sse.tongji.edu.cluster.config.Params;
 import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
 import sse.tongji.edu.cluster.mysqlconnection.ConnectionFactory;
 
@@ -33,11 +34,11 @@ public class ShowClusterHistoryDaoRemoteOne extends ShowClusterHistoryDaoBase {
 			result = result.substring(errorHead.length(),
 				result.length() - errorEnd.length());
 		}
-		result = result.replaceAll("memory", "Memory");
-		result = result.replaceAll("networkReceive", "Network Receive");
-		result = result.replaceAll("networkSend", "Network Send");
-		result = result.replaceAll("cpu", "CPU");
-		result = result.replaceAll("createTime", "CreateTime");
+		result = result.replaceAll("memory", Params.MemoryShortName);
+		result = result.replaceAll("networkReceive", Params.NetworkReceiveShortName);
+		result = result.replaceAll("networkSend", Params.NetworkSendShortName);
+		result = result.replaceAll("cpu", Params.CPUShortName);
+		result = result.replaceAll("createTime", Params.CreateTimeShortName);
 		return result;
 	}
 

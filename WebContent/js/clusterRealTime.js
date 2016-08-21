@@ -3,7 +3,7 @@ var machineid = '127.0.0.1'
 
 function init() {
 	JS.Engine.on({
-		test : function(strData) {// 侦听一个channel
+		RealTime : function(strData) {// 侦听一个channel
 			target.innerHTML = strData;
 			var jsonData = JSON.parse(strData);
 			var nowTime = jsonData.createtime;
