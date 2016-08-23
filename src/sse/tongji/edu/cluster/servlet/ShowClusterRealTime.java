@@ -45,14 +45,6 @@ public class ShowClusterRealTime implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		CometContext cc = CometContext.getInstance();
 		cc.registChannel(CHANNEL);// 注册应用的channel
-
-		Thread helloAppModule = new Thread(new HelloAppModule(),
-			"Sender App Module");
-		// 是否启动
-		helloAppModule.setDaemon(true);
-		// 启动线程
-		helloAppModule.start();
-
 	}
 
 }
