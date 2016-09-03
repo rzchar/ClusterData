@@ -28,8 +28,6 @@ var dataAttrs = [ {
 	attrname : 'machineid'
 } ];
 
-
-
 var currentSelection = [];
 
 function clearSearch(level) {
@@ -56,8 +54,11 @@ function refactorData(dt, callback) {
 		records = JSON.parse(dt.value);
 		for ( var i in records) {
 			for ( var g in graphs) {
-				ndt[graphs[g].shortname].push([ records[i].createtime,
-					records[i][graphs[g].shortname] ]);
+				ndt[graphs[g].shortname].push({
+					name : records[i].createtime,
+					value : [ records[i].createtime,
+						records[i][graphs[g].shortname] ]
+				});
 			}
 		}
 		// out.innerText = JSON.stringify(ndt);
@@ -158,13 +159,11 @@ function renderInfoData(tree) {
 	});
 }
 
-
-
 function addData() {
 	var tree = new CluDataTree();
 	var list = {};
 	for ( var d in dataFromServer) {
-		tree.add(dataFromServer[d], dataAttrs.map(function(t){
+		tree.add(dataFromServer[d], dataAttrs.map(function(t) {
 			return t.attrname;
 		}));
 		list[dataFromServer[d].id] = dataFromServer[d];
