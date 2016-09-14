@@ -203,7 +203,7 @@ function onload() {
 			mapOfData = dataResult.list;
 			renderOptionButton();
 			renderInfoData(treeOfData);
-			initGraphs();
+			initGraphs(document.getElementById('graphDiv'));
 		}
 	});
 }

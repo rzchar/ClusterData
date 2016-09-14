@@ -19,23 +19,6 @@ public class ShowClusterRealTime implements ServletContextListener {
 
 	private static final String CHANNEL = Params.RealTimeChanel;
 
-	class HelloAppModule implements Runnable {
-		public void run() {
-			while (true) {
-				try {
-					// 睡眠时间
-					Thread.sleep(1000);
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-				CometEngine engine = CometContext.getInstance().getEngine();
-				// 开始发送
-				engine.sendToAll(CHANNEL, "");
-			}
-		}
-
-	}
-
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 
