@@ -1,4 +1,4 @@
-package sse.tongji.edu.cluster.dao;
+package sse.tongji.edu.cluster.dataaccess;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
+import sse.tongji.edu.cluster.dataaccess.intf.IShowClusterHistoryDao;
 
 public abstract class ShowClusterHistoryDaoBase implements IShowClusterHistoryDao {
 

@@ -1,9 +1,11 @@
-package sse.tongji.edu.cluster.dao;
+package sse.tongji.edu.cluster.dataaccess;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoBase;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoLocal;
+import sse.tongji.edu.cluster.dataaccess.intf.IShowClusterHistoryDao;
 import sse.tongji.edu.cluster.mysqlconnection.ConnectionFactory;
 
 public class ShowClusterHistoryDaoLocal extends ShowClusterHistoryDaoBase {

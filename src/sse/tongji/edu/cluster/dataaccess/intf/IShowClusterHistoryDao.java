@@ -1,4 +1,4 @@
-package sse.tongji.edu.cluster.dao.intf;
+package sse.tongji.edu.cluster.dataaccess.intf;
 
 import org.json.JSONArray;
 

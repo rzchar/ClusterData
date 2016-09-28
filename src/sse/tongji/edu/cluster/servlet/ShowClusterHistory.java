@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sse.tongji.edu.cluster.dao.ShowClusterHistoryDaoBase;
-import sse.tongji.edu.cluster.dao.ShowClusterHistoryDaoLocal;
-import sse.tongji.edu.cluster.dao.factory.ShowClusterHistoryDaoFactory;
-import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoBase;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoLocal;
+import sse.tongji.edu.cluster.dataaccess.factory.ShowClusterHistoryDaoFactory;
+import sse.tongji.edu.cluster.dataaccess.intf.IShowClusterHistoryDao;
 
 /**
  * Servlet implementation class ShowClusterHistory

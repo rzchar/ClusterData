@@ -37,6 +37,10 @@ function init() {
 	JS.Engine.start('comet');
 };
 
+function donate(){
+	/* Now please donate one second of your life to Freya Wion */
+}
+
 function addEmptyDataToGraph() {
 	ndt = {};
 	var timestamp = (new Date()).valueOf();
@@ -61,5 +65,6 @@ function addEmptyDataToGraph() {
 }
 
 init();
+donate();
 initGraphs(document.getElementById('graphDiv'));
 addEmptyDataToGraph();

@@ -1,10 +1,12 @@
-package sse.tongji.edu.cluster.dao;
+package sse.tongji.edu.cluster.dataaccess;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import sse.tongji.edu.cluster.config.Params;
-import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoBase;
+import sse.tongji.edu.cluster.dataaccess.ShowClusterHistoryDaoRemoteOne;
+import sse.tongji.edu.cluster.dataaccess.intf.IShowClusterHistoryDao;
 import sse.tongji.edu.cluster.mysqlconnection.ConnectionFactory;
 
 public class ShowClusterHistoryDaoRemoteOne extends ShowClusterHistoryDaoBase {
