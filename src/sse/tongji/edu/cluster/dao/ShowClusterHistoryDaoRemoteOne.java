@@ -1,13 +1,7 @@
 package sse.tongji.edu.cluster.dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import sse.tongji.edu.cluster.config.Params;
 import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;

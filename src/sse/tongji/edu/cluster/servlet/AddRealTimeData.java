@@ -67,7 +67,7 @@ public class AddRealTimeData extends HttpServlet {
 				JSONObject inJson = this.toInnerJSON(decodeJSON);
 				engine.sendToAll(Params.RealTimeChanel, inJson.toString());
 			}
-			System.out.println("received :" + codedJSON);
+			//System.out.println("received :" + codedJSON);
 		} catch (JSONException e) {
 			e.printStackTrace(writer);
 		} finally {

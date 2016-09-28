@@ -1,26 +1,39 @@
+function getQueryString(name) {
+	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) {
+		return unescape(r[2]);
+	}
+	return null;
+}
+
 var target = document.getElementById('target');
-var machineid = '127.0.0.1'
+var machineid = getQueryString('machineid');
+if(machineid ==  null){
+	machineid = "127.0.0.1"
+}
 
 function init() {
-	JS.Engine.on({
-		RealTime : function(strData) {// 侦听一个channel
-			target.innerHTML = strData;
-			var jsonData = JSON.parse(strData);
-			var nowTime = jsonData.createtime;
-			for ( var g in graphs) {
+	var onGetMessage = function(strData) {// 侦听一个channel
+		target.innerHTML = strData;
+		var jsonData = JSON.parse(strData);
+		var nowTime = jsonData.createtime;
+		for ( var g in graphs) {
 
-				graphs[g].option.series[0].data.shift();
-				graphs[g].option.series[0].data.push({
-					name : nowTime,
-					value : [ nowTime, jsonData[graphs[g].shortname] ]
-				});
-				graphs[g].chart.setOption({
-					series : graphs[g].option.series
-				}, false);
+			graphs[g].option.series[0].data.shift();
+			graphs[g].option.series[0].data.push({
+				name : nowTime,
+				value : [ nowTime, jsonData[graphs[g].shortname] ]
+			});
+			graphs[g].chart.setOption({
+				series : graphs[g].option.series
+			}, false);
 
-			}
 		}
-	});
+	}
+	var channel = {}
+	channel[machineid] =  onGetMessage;
+	JS.Engine.on(channel);
 	JS.Engine.start('comet');
 };
 
@@ -34,7 +47,7 @@ function addEmptyDataToGraph() {
 			var virtualTime = timestamp - iv * 1000;
 			ndt[graphs[g].shortname].unshift({
 				name : virtualTime,
-				value : [ timestamp - iv * 1000, 0 ]
+				value : [ timestamp - iv * 200, 0 ]
 			});
 		}
 		graphs[g].option.legend = {
@@ -48,5 +61,5 @@ function addEmptyDataToGraph() {
 }
 
 init();
-initGraphs();
+initGraphs(document.getElementById('graphDiv'));
 addEmptyDataToGraph();

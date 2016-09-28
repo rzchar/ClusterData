@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import sse.tongji.edu.cluster.dao.intf.IShowClusterHistoryDao;
-import sse.tongji.edu.cluster.mysqlconnection.ConnectionFactory;
 
 public abstract class ShowClusterHistoryDaoBase implements IShowClusterHistoryDao {
 

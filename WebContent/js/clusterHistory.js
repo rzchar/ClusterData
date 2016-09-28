@@ -52,12 +52,26 @@ function refactorData(dt, callback) {
 			ndt[graphs[g].shortname] = [];
 		}
 		records = JSON.parse(dt.value);
+		var pre = {
+			nts : -1,
+			ntr : -1
+		};
 		for ( var i in records) {
 			for ( var g in graphs) {
+				var value = records[i][graphs[g].shortname];
+				if (graphs[g].shortname == 'nts'
+					|| graphs[g].shortname == 'ntr') {
+					if (pre[graphs[g].shortname] < 0) {
+						pre[graphs[g].shortname] = value;
+						continue;
+					} else {
+						value = value - pre[graphs[g].shortname];
+						pre[graphs[g].shortname] = records[i][graphs[g].shortname];
+					}
+				}
 				ndt[graphs[g].shortname].push({
 					name : records[i].createtime,
-					value : [ records[i].createtime,
-						records[i][graphs[g].shortname] ]
+					value : [ records[i].createtime, value ]
 				});
 			}
 		}
@@ -194,7 +208,7 @@ function onload() {
 		dataType : "json",
 		data : {
 			mod : 'start',
-			dbsource : 'default'
+			dbsource : 'remote1'
 		},
 		success : function(data) {
 			dataFromServer = data;
