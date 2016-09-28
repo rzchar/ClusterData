@@ -1,17 +1,10 @@
 package sse.tongji.edu.cluster.servlet;
 
-import java.util.Calendar;
-import java.util.Random;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.comet4j.core.CometContext;
-import org.comet4j.core.CometEngine;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import sse.tongji.edu.cluster.config.Params;
 
 @WebListener

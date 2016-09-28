@@ -1,4 +1,4 @@
-package sse.tongji.edu.cluster.servlet;
+package sse.tongji.edu.cluster.serverapi;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import sse.tongji.edu.cluster.config.Params;
  * Servlet implementation class AddRealTimeData
  */
 @WebServlet("/servlet/AddRealTimeData")
-public class AddRealTimeData extends HttpServlet {
+public class ReceiveRealTimeData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	static private CometEngine engine = CometContext.getInstance().getEngine();
@@ -37,7 +37,7 @@ public class AddRealTimeData extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddRealTimeData() {
+	public ReceiveRealTimeData() {
 		super();
 	}
 
