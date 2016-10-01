@@ -3,15 +3,30 @@
  * Welcome to Summoner's Rift
  */
 
-var realTimeRoot = document.getElementById("reatTimeRoot");
+var realTimeButtons = document.getElementById("realtimeButtons");
 
 var historyRoot = document.getElementById("historyRoot");
 
 function  init(){
-	var label1 = document.createElement("label");
-	label1.innerText = "Real Time";
-	reatTimeRoot.appendChild(label1);
-	
+	$.ajax({
+		url : './servlet/GetCurrentStatus',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			mod : 'name'
+		},
+		success : function(data) {
+			machineIds = data;
+			for(var i in machineIds){
+				var al = document.createElement('a');
+				al.href =  './clusterrealtime.html?machineid=' + machineIds[i];
+				// al.type = 'button'; //attribute dose not exist in a label
+				al.innerText = machineIds[i];
+				realTimeButtons.appendChild(al);
+			}
+		}
+	});
 	
 };
+
 init();
