@@ -19,10 +19,12 @@ function  init(){
 			machineIds = data;
 			for(var i in machineIds){
 				var al = document.createElement('a');
+				var lil = document.createElement('li');
 				al.href =  './clusterrealtime.html?machineid=' + machineIds[i];
 				// al.type = 'button'; //attribute dose not exist in a label
 				al.innerText = machineIds[i];
-				realTimeButtons.appendChild(al);
+				lil.appendChild(al)
+				realTimeButtons.appendChild(lil);
 			}
 		}
 	});

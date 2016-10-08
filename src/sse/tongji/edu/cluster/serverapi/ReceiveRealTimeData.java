@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +32,8 @@ import sse.tongji.edu.cluster.config.Params;
  */
 @WebServlet("/servlet/AddRealTimeData")
 public class ReceiveRealTimeData extends HttpServlet {
+	private static Set<String> channels = new HashSet<>();
+	
 	private static final long serialVersionUID = 1L;
 	
 	static private CometEngine engine = CometContext.getInstance().getEngine();
@@ -65,7 +69,12 @@ public class ReceiveRealTimeData extends HttpServlet {
 				writer.append(resultJSON.toString());
 			} else {
 				JSONObject inJson = this.toInnerJSON(decodeJSON);
-				engine.sendToAll(Params.RealTimeChanel, inJson.toString());
+				String channel = this.getMachineId(decodeJSON);
+				if(!channels.contains(channel)){
+					channels.add(channel);
+					CometContext.getInstance().registChannel(channel);
+				}
+				engine.sendToAll(channel, inJson.toString());
 			}
 			//System.out.println("received :" + codedJSON);
 		} catch (JSONException e) {
@@ -120,6 +129,18 @@ public class ReceiveRealTimeData extends HttpServlet {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	protected String getMachineId(String jsonString){
+		JSONObject jojo;
+		try {
+			jojo = new JSONObject(jsonString);
+			return jojo.getString("machineid");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "sakura";
 	}
 
 }

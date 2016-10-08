@@ -10,7 +10,7 @@ function getQueryString(name) {
 var target = document.getElementById('target');
 var machineid = getQueryString('machineid');
 if(machineid ==  null){
-	machineid = "127.0.0.1"
+	machineid = "sakura"
 }
 
 function init() {

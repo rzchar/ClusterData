@@ -1,7 +1,7 @@
 package sse.tongji.edu.cluster.config;
 
 public class Params {
-	static public String RealTimeChanel = "127.0.0.1";
+	static public String RealTimeChanel = "sakura";
 	
 	static public String MemoryShortName = "mem";
 	
